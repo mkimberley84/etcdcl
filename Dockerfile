@@ -10,7 +10,7 @@ COPY        . /app
 
 WORKDIR     /app
 
-RUN         pip install --upgrade --user pip   ;\
+RUN         pip install --upgrade pip --user   ;\
             pip install python-etcd    ;\
             pip install flask;
 ENTRYPOINT  "python"
