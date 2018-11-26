@@ -1,6 +1,6 @@
 FROM        ubuntu:latest
 
-RUN         sudo apt-get && apt-upgrade             ;\
+RUN         apt-get && apt-upgrade             ;\
             apt-get install -y python3-pip          ;\
 ENV         ETCDSERVER=127.0.0.1
 
