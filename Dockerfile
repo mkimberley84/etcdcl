@@ -1,6 +1,6 @@
 FROM        ubuntu:latest
 
-RUN         apt-get update && apt-get upgrade             ;\
+RUN         apt-get update -y && apt-get upgrade -y             ;\
             apt-get install -y python               ;\
             apt-get install -y python-pip          ;
 
