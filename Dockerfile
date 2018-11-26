@@ -7,7 +7,7 @@ RUN         apt-get update -y && apt-get upgrade -y             ;\
 COPY        . /app
 
 WORKDIR     /app
-
+EXPOSE      5000
 RUN         pip install --upgrade pip==9.0.3 --user   ;\
             pip install -r requirements.txt ;
 ENTRYPOINT  ["python"]
