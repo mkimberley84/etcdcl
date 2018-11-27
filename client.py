@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 print (str(os.environ['ETCDSERVER']))
 #etcd config
 etcd3 = etcd3.client(host=(os.environ['ETCDSERVER']))
-test = "test"
+test = "Inital message generated on client startup"
 etcd3.put('/message', test)
 etcd3.get('/message')
  
@@ -26,10 +26,11 @@ def hello():
     form = ReusableForm(request.form)
  
     print form.errors
+ 
     if request.method == 'POST':
         name=request.form['name']
         print name
- 
+        
         if form.validate():
             # Save the comment here.
             etcd3.put('/message', name)
@@ -38,6 +39,13 @@ def hello():
             flash('All the form fields are required. ')
  
     return render_template('client.html', form=form)
+
+ 
+@app.route("/results", methods=['GET', 'POST'])
+def results():
+    flash('Message: ' + str(tuple(etcd3.get('/message'))))
+    
+    return render_template('results.html')
  
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port= 5000)

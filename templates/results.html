@@ -6,26 +6,14 @@
         <title>Reusable Form Demo</title>
     </head>
     <body>
-        <h1>Please enter some text to store in the etcd database:</h1>
+        <h1>Results retrieved from etcd database:</h1>
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
                 <ul>
                     {% for message in messages %}
                         <li>{{ message[1] }}</li>
                     {% endfor %}
                 </ul>
-            {% endif %}
         {% endwith %}
-        <form action="" method="post">
-            {{ form.csrf }}
- 
-            <div class="input text">
-                {{ form.name.label }} {{ form.name }}
-            </div>
- 
-            <div class="input submit">
-                <input type="submit" value="Submit" />
-            </div>
-        </form>
+
     </body>
 </html>
